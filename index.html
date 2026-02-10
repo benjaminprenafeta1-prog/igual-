@@ -24,19 +24,25 @@
       margin-top: 15px;
     }
 
+    .buttons {
+      position: relative;
+      margin-top: 30px;
+      height: 120px;
+    }
+
     button {
       font-size: 20px;
       padding: 15px 35px;
-      margin: 20px;
       border: none;
       border-radius: 15px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
     #yes {
       background-color: #ff4d88;
       color: white;
+      margin-right: 20px;
     }
 
     #yes:hover {
@@ -46,6 +52,7 @@
     #no {
       background-color: #ddd;
       position: absolute;
+      right: 0;
     }
 
     #finalMessage {
@@ -69,12 +76,46 @@
 
   <div id="thinking">Pensándolo… ⏳💭</div>
 
-  <button id="yes" onclick="sayYes()">Sí 💘😍</button>
-  <button id="no" onmouseover="moveNo()">No 😢</button>
+  <div class="buttons">
+    <button id="yes">Sí 💘😍</button>
+    <button id="no">No 😢</button>
+  </div>
 
   <div id="finalMessage">Sabía que dirías que sí 🥹💘</div>
 
-  <!-- Imagen del gatito incrustada -->
+  <!-- Imagen incrustada (funciona en CodePen) -->
   <img
     id="cat"
-    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBUQEBAVFRUVFRUVFRUVFRUVFRUWFxUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lHyUtLS0tLS0tLS0tLS0t
+    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBUQEBAVFRUVFRUVFRUVFRUVFRUWFxUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADoQAAIBAgQDBQYEBgIDAAAAAAECAwQRAAUSITEGE0FRImFxgZGhFCNCscHR8BVCUmJy4f/EABoBAQADAQEBAAAAAAAAAAAAAAABAgMEBQb/xAAxEQACAgEDAwMDAwQDAAAAAAAAAQIRAwQSITFBEyJRYXGBkaGx8EJSwfBCUv/aAAwDAQACEQMRAD8A+4iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Z"
+    alt="Gatito puñito"
+  >
+
+  <script>
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const thinking = document.getElementById("thinking");
+    const finalMessage = document.getElementById("finalMessage");
+    const cat = document.getElementById("cat");
+
+    yesBtn.addEventListener("click", () => {
+      thinking.style.display = "block";
+
+      setTimeout(() => {
+        thinking.style.display = "none";
+        finalMessage.style.display = "block";
+        cat.style.display = "block";
+      }, 1500);
+    });
+
+    noBtn.addEventListener("mouseover", () => {
+      const container = document.querySelector(".buttons");
+      const maxX = container.clientWidth - noBtn.offsetWidth;
+      const maxY = container.clientHeight - noBtn.offsetHeight;
+
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
+    });
+  </script>
+
+</body>
+</html>
