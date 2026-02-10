@@ -74,32 +74,7 @@
 
   <div id="finalMessage">Sabía que dirías que sí 🥹💘</div>
 
-  <!-- Imagen del gatito -->
+  <!-- Imagen del gatito incrustada -->
   <img
     id="cat"
-    src="https://i.imgur.com/6Z8FQzT.jpeg"
-    alt="Gatito puñito"
-  >
-
-  <script>
-    function moveNo() {
-      const noBtn = document.getElementById("no");
-      const x = Math.random() * (window.innerWidth - 150);
-      const y = Math.random() * (window.innerHeight - 150);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    }
-
-    function sayYes() {
-      document.getElementById("thinking").style.display = "block";
-
-      setTimeout(() => {
-        document.getElementById("thinking").style.display = "none";
-        document.getElementById("finalMessage").style.display = "block";
-        document.getElementById("cat").style.display = "block";
-      }, 1500);
-    }
-  </script>
-
-</body>
-</html>
+    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBUQEBAVFRUVFRUVFRUVFRUVFRUWFxUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lHyUtLS0tLS0tLS0tLS0t
