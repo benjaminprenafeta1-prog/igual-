@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>San Valentín 💘</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: pink;
+      text-align: center;
+      padding: 40px;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #e60073;
+      font-size: 32px;
+    }
+
+    #thinking {
+      font-size: 22px;
+      color: #cc0066;
+      display: none;
+      margin-top: 15px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 15px 35px;
+      margin: 15px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yes {
+      background-color: #ff4d88;
+      color: white;
+    }
+
+    #yes:hover {
+      transform: scale(1.3);
+    }
+
+    #no {
+      background-color: #ccc;
+      position: absolute;
+    }
+
+    img {
+      margin-top: 25px;
+      max-width: 300px;
+      border-radius: 20px;
+      display: none;
+    }
+
+    #finalMessage {
+      font-size: 24px;
+      color: #e60073;
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💖 ¿Te gustaría ser mi cita de San Valentín? 😍 💖</h1>
+
+  <div id="thinking">Pensándolo… ⏳💭</div>
+
+  <button id="yes" onclick="sayYes()">Sí 💘😍</button>
+  <button id="no" onmouseover="moveNo()">No 😢</button>
+
+  <div id="finalMessage">Sabía que dirías que sí 🥹💘</div>
+
+  <img id="cat" src="https://i.imgur.com/6Z8FQzT.jpeg" alt="Puñito gatuno">
+
+  <script>
+    function moveNo() {
+      const noBtn = document.getElementById("no");
+      const x = Math.random() * (window.innerWidth - 150);
+      const y = Math.random() * (window.innerHeight - 150);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    function sayYes() {
+      document.getElementById("thinking").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("thinking").style.display = "none";
+        document.getElementById("finalMessage").style.display = "block";
+        document.getElementById("cat").style.display = "block";
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>
