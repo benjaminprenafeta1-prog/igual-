@@ -1,99 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>San Valentín 💘</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background: pink;
-      text-align: center;
-      padding: 40px;
-      overflow: hidden;
-    }
-
-    h1 {
-      color: #e60073;
-      font-size: 32px;
-    }
-
-    #thinking {
-      font-size: 22px;
-      color: #cc0066;
-      display: none;
-      margin-top: 15px;
-    }
-
-    button {
-      font-size: 20px;
-      padding: 15px 35px;
-      margin: 15px;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    #yes {
-      background-color: #ff4d88;
-      color: white;
-    }
-
-    #yes:hover {
-      transform: scale(1.3);
-    }
-
-    #no {
-      background-color: #ccc;
-      position: absolute;
-    }
-
-    img {
-      margin-top: 25px;
-      max-width: 300px;
-      border-radius: 20px;
-      display: none;
-    }
-
-    #finalMessage {
-      font-size: 24px;
-      color: #e60073;
-      display: none;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Image Reveal with Confetti</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+        #catContainer {
+            display: none;
+            text-align: center;
+        }
+        .confetti {
+            position: absolute;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: pink;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
+    <h1>Pensándolo...</h1>
+    <button id="yesButton">Yes</button>
+    <div id="catContainer">
+        <img src="https://i.imgur.com/6Z8FQzT.jpeg" alt="Cat" style="max-width: 100%; height: auto;">
+        <h2>Sabía que dirías que sí 🥹💘</h2>
+    </div>
+    <div class="confetti" id="confettiContainer"></div>
+    <script>
+        document.getElementById('yesButton').onclick = function() {
+            document.querySelector('h1').innerText = 'Pensándolo...';
+            setTimeout(() => {
+                document.querySelector('h1').style.display = 'none';
+                document.getElementById('catContainer').style.display = 'block';
+                startConfetti();
+            }, 1500);
+        };
 
-  <h1>💖 ¿Te gustaría ser mi cita de San Valentín? 😍 💖</h1>
-
-  <div id="thinking">Pensándolo… ⏳💭</div>
-
-  <button id="yes" onclick="sayYes()">Sí 💘😍</button>
-  <button id="no" onmouseover="moveNo()">No 😢</button>
-
-  <div id="finalMessage">Sabía que dirías que sí 🥹💘</div>
-
-  <img id="cat" src="https://i.imgur.com/6Z8FQzT.jpeg" alt="Puñito gatuno">
-
-  <script>
-    function moveNo() {
-      const noBtn = document.getElementById("no");
-      const x = Math.random() * (window.innerWidth - 150);
-      const y = Math.random() * (window.innerHeight - 150);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    }
-
-    function sayYes() {
-      document.getElementById("thinking").style.display = "block";
-      setTimeout(() => {
-        document.getElementById("thinking").style.display = "none";
-        document.getElementById("finalMessage").style.display = "block";
-        document.getElementById("cat").style.display = "block";
-      }, 1500);
-    }
-  </script>
-
+        function startConfetti() {
+            const container = document.getElementById('confettiContainer');
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.classList.add('confetti-piece');
+                confettiPiece.style.left = Math.random() * 100 + 'vw';
+                confettiPiece.style.animationDuration = Math.random() * 2 + 2 + 's';
+                confettiPiece.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(confettiPiece);
+            }
+        }
+    </script>
 </body>
 </html>
