@@ -86,12 +86,14 @@
   <button id="no">No 😢</button>
 </div>
 
-<!-- 👇 AQUÍ ESTÁ LA IMAGEN DEL LINK -->
 <div id="result">
   <h2 style="color:#e60073;">¡Sabía que dirías que sí! 🥹💘</h2>
+
+  <!-- 🔥 AQUÍ ESTÁ LA CLAVE -->
   <img
     src="https://play-lh.googleusercontent.com/rpsEuuH3hwUguWDpKbZWrlX5zJ7f66jjOZgUVzvEI3lzmN1mphsDtP3dqhbPN1kjmQSX=w240-h480-rw"
     alt="Imagen San Valentín"
+    referrerpolicy="no-referrer"
   >
 </div>
 
@@ -100,13 +102,11 @@
   const noBtn = document.getElementById("no");
   const result = document.getElementById("result");
 
-  // El botón NO se mueve
   noBtn.addEventListener("mouseover", () => {
     noBtn.style.left = Math.random() * 300 + "px";
     noBtn.style.top = Math.random() * 120 + "px";
   });
 
-  // Al presionar SÍ
   yesBtn.addEventListener("click", () => {
     result.style.display = "block";
     lanzarCorazones();
@@ -128,4 +128,3 @@
 
 </body>
 </html>
-
